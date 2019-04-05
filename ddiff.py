@@ -6,7 +6,7 @@ import sys
 dir1 = ''
 dir2 = ''
 
-def showMainMenu():
+def show_main_menu():
     print("\n")
     print("Directory 1 is set to: ", dir1)
     print("Directory 2 is set to: ", dir2)
@@ -18,7 +18,7 @@ def showMainMenu():
     print("4. Dir 2 contained in dir 1?")
     print("5. Exit")
 
-def getDirectory():
+def prompt_directory():
     root = Tkinter.Tk()
     root.withdraw() #use to hide tkinter window
     root.wm_attributes('-topmost', 1)
@@ -32,12 +32,12 @@ def main():
     global dir1, dir2
     
     while True:
-        showMainMenu()
+        show_main_menu()
         option = input("Enter an option: ")
         if option == "1":
-            dir1 = getDirectory()
+            dir1 = prompt_directory()
         if option == "2":
-            dir2 = getDirectory()
+            dir2 = prompt_directory()
         if option == "5":
             sys.exit(0)
 
