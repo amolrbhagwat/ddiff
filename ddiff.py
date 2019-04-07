@@ -3,20 +3,16 @@ import tkinter.filedialog as filedialog
 import os
 import sys
 
-dir1 = ''
-dir2 = ''
+source_dir = ''
+target_dir = ''
 
 def show_main_menu():
     print("\n")
-    print("Directory 1 is set to: ", dir1)
-    print("Directory 2 is set to: ", dir2)
-    print("\n")
 
-    print("1. Set directory 1")
-    print("2. Set directory 2")
-    print("3. Dir 1 contained in dir 2?")
-    print("4. Dir 2 contained in dir 1?")
-    print("5. Exit")
+    print("1. Set source directory", "(Currently: ", source_dir, ")")
+    print("2. Set target directory", "(Currently: ", target_dir, ")")
+    print("3. Check if target contains files under source")
+    print("4. Exit")
 
 def prompt_directory():
     root = Tkinter.Tk()
@@ -29,16 +25,16 @@ def prompt_directory():
     return tempdir
 
 def main():
-    global dir1, dir2
+    global source_dir, target_dir
     
     while True:
         show_main_menu()
         option = input("Enter an option: ")
         if option == "1":
-            dir1 = prompt_directory()
+            source_dir = prompt_directory()
         if option == "2":
-            dir2 = prompt_directory()
-        if option == "5":
+            target_dir = prompt_directory()
+        if option == "4":
             sys.exit(0)
 
 main()
