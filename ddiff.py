@@ -1,5 +1,7 @@
 import tkinter as Tkinter
 import tkinter.filedialog as filedialog
+from colorama import Fore, Style
+from colorama import init
 import os
 import sys
 
@@ -7,12 +9,12 @@ root = Tkinter.Tk()
 root.withdraw() #use to hide tkinter window
 root.wm_attributes('-topmost', 1)
 
+init() # For colorama
+
 source_dir = ''
 target_dir = ''
 
 def show_main_menu():
-    print("\n")
-
     print("1. Set source directory", "(Currently: ", source_dir, ")")
     print("2. Set target directory", "(Currently: ", target_dir, ")")
     print("3. Check if target contains files under source")
@@ -53,13 +55,15 @@ def ddiff():
     for filename in src_list:
         if filename in index:
             total_found += 1
-            print(filename, "is present in the target directory under", index[filename])
+            print(Fore.GREEN + filename + " is present in the target directory under " + str(index[filename]))
         else:
             total_missing += 1
-            print(filename, "IS MISSING FROM TARGET DIRECTORY!")
+            print(Fore.RED + filename + " IS MISSING FROM TARGET DIRECTORY!")
 
-    print("Total found:", total_found)
-    print("Total missing:", total_missing)
+    print()
+    print(Fore.GREEN + "Total found: " + str(total_found))
+    print(Fore.RED + "Total missing: " + str(total_missing))
+    print(Style.RESET_ALL)
 
 def main():
     global source_dir, target_dir
